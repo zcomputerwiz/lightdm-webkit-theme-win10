@@ -1,6 +1,9 @@
-# Tendou for LightDM
+# WARNING: THIS ONLY WORKS FOR 1366x768 NOW!
+## YOU NEED TO HAVE THE SEGOE UI FONT FROM A WINDOWS 10 INSTALLATION
 
-[![Build Status][build-badge]][build-link] [![Coverage][coverage-badge]][coverage-link] [![MIT License][license-badge]](LICENSE.md)
+# Win10 for LightDM
+
+[![MIT License][license-badge]](LICENSE.md)
 
 ![](https://raw.githubusercontent.com/codehearts/lightdm-webkit-theme-tendou/master/screenshot.png)
 
@@ -17,8 +20,4 @@ This theme was originally written for personal use, but has gotten some attentio
 ## Contributing
 Found a bug? Want to add new functionality? Contributions are warmly welcomed! See [CONTRIBUTING.md](https://github.com/codehearts/lightdm-webkit-theme-tendou/blob/master/CONTRIBUTING.md) to learn how this project is set up and what the expectations are.
 
-[coverage-badge]: https://codecov.io/gh/codehearts/lightdm-webkit-theme-tendou/branch/master/graph/badge.svg
-[coverage-link]:  https://codecov.io/gh/codehearts/lightdm-webkit-theme-tendou
 [license-badge]:  https://img.shields.io/badge/license-MIT-007EC7.svg
-[build-badge]:    https://travis-ci.org/codehearts/lightdm-webkit-theme-tendou.svg?branch=master
-[build-link]:     https://travis-ci.org/codehearts/lightdm-webkit-theme-tendou

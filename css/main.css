@@ -13,10 +13,11 @@ html {
 	overflow: hidden;
     -webkit-user-select: none;
     user-select: none;
+	background-color: #000;
 }
 
 body {
-	background-color: #f6efef;
+	background-color: #000;
 	background: url('../images/img100.jpg') no-repeat left top fixed;
 	background-size: 1366px 768px;
 	font-family: 'Segoe UI', sans-serif;
