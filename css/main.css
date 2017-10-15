@@ -231,6 +231,9 @@ body.layer2 > #layer2 {
 }
 
 /* User List */
+#user-list:focus {
+    outline: none;
+}
 
 #user-list {
 	list-style: none;
