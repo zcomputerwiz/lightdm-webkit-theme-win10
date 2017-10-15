@@ -24,7 +24,8 @@ function Tendou() {
       el_button_sleep      = null, // Sleep button
       current_user_index   = 0,    // Index of the currently selected user
       keypress_handlers    = {},   // Registered keypress callbacks
-      default_avatar       = 'images/default-avatar.png',
+      default_avatar_t     = 'images/default-avatar.png',
+      default_avatar       = 'images/default-avatar1.png',
 
 
 
@@ -75,7 +76,7 @@ function Tendou() {
           );
         } else {
           // Show an error message if authentication was not successful
-          window.show_error('Your password was incorrect');
+          window.show_error('The password is incorrect. Try again.');
 
           // Reset the password field and remove the wait indicator
           PrivateProp.el_input_pass.value = '';
@@ -278,14 +279,20 @@ function Tendou() {
      * Returns the path of the picture for the user with the given id.
      *
      * @param int user_index Index of the user in the LightDM user array.
+     * @param int type Whether to show the transparent image or not
      */
-    get_picture_from_index: function(user_index) {
-      var picture;
+    get_picture_from_index: function(user_index, type) {
+        type = (typeof type !== 'undefined') ?  type : 0;
+        var picture;
 
       if (lightdm.users[user_index].image) {
         picture = lightdm.users[user_index].image;
       } else {
-        picture = default_avatar;
+        if (type != 0) {
+            picture = default_avatar;
+        } else {
+            picture = default_avatar_t;
+        }
       }
 
       return picture;
@@ -347,6 +354,31 @@ function Tendou() {
     el_button_sleep      = document.getElementById('sleep');
   }
 
+    function closest(el, selector) {
+        var matchesFn;
+
+        // find vendor prefix
+        ['matches','webkitMatchesSelector','mozMatchesSelector','msMatchesSelector','oMatchesSelector'].some(function(fn) {
+            if (typeof document.body[fn] == 'function') {
+                matchesFn = fn;
+                return true;
+            }
+            return false;
+        });
+
+        var parent;
+
+        // traverse parents
+        while (el) {
+            parent = el.parentElement;
+            if (parent && parent[matchesFn](selector)) {
+                return parent;
+            }
+            el = parent;
+        }
+
+        return null;
+    }
 
   /**
    * Registeres event listeners on DOM elements.
@@ -354,7 +386,15 @@ function Tendou() {
   function init_dom_listeners() {
     /* Update the current user when a user list entry is clicked */
     el_list_user_list.addEventListener('click', function(e) {
-      var user_index = parseInt(e.target.id.replace('user-', ''), 10);
+
+      var user_index = null;
+
+      if (closest(e.target, "li") == null) {
+        user_index = parseInt(e.target.id.replace('user-', ''), 10);
+      } else {
+        var target = closest(e.target, "li");
+        user_index = parseInt(target.id.replace('user-', ''), 10);
+      }
 
       Private.set_current_user_index(user_index);
       indicate_current_user_on_screen();
@@ -407,15 +447,18 @@ function Tendou() {
   function init_dom_users_list() {
     var user_index;
     var fullname;
+    var imglink;
 
-    if (lightdm.num_users > 1) {
-      for (user_index = 0; user_index < lightdm.num_users; user_index++) {
-        if (lightdm.users.hasOwnProperty(user_index)) {
-          fullname = Public.get_full_name_from_index(user_index);
+      if (lightdm.num_users > 1) {
+        for (user_index = 0; user_index < lightdm.num_users; user_index++) {
+          if (lightdm.users.hasOwnProperty(user_index)) {
+            fullname = Public.get_full_name_from_index(user_index);
+            imglink = Public.get_picture_from_index(user_index,1);
 
           el_list_user_list.insertAdjacentHTML(
             'beforeend',
-            '<li id="user-'+user_index+'">'+fullname+'</li>'
+            // '<li id="user-'+user_index+'">'+fullname+'</li>'
+            '<li id="user-'+user_index+'"><table><tr><td><img class="user-list-img" src="'+imglink+'" alt="" /></td><td><div class="name">'+fullname+'</div></td></tr></table></li>'
           );
         }
       }
@@ -462,12 +505,12 @@ function Tendou() {
     el_img_profile.src = Public.get_picture_from_index(user_index);
 
     // Reapply the animation
-    setTimeout(function() {
+    /*setTimeout(function() {
       el_figure_profile.style.webkitAnimationDelay = 0;
       el_figure_profile.style.webkitAnimationName  = 'avatar_in';
       el_figure_profile.style.animationDelay = 0;
       el_figure_profile.style.animationName  = 'avatar_in';
-    }, 1);
+    }, 1);*/
   }
 
 
@@ -526,7 +569,7 @@ function Tendou() {
 Tendou.prototype._show_wait_indicator = function() {
   if (null === this._el_wait_indicator) {
     this._el_wait_indicator = document.createElement('div');
-    this._el_wait_indicator.className = 'spinner';
+    this._el_wait_indicator.className = 'spinner-w10';
 
     this._el_text_message.insertAdjacentElement(
       'afterend',
