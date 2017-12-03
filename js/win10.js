@@ -44,7 +44,7 @@ month[7] = "August";
 month[8] = "September";
 month[9] = "October";
 month[10] = "November";
-month[12] = "December";
+month[11] = "December";
 
 var clockLoop = setInterval(clockDo,1000);
 function clockDo() {
