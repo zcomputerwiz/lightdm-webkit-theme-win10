@@ -34,6 +34,8 @@ body {
 body.layer2 {
 	background-size: 102vw auto;
 	background-position: center center;
+	position: fixed;
+
 }
 
 body:before {
@@ -83,7 +85,7 @@ input:focus {
 
 .clock {
 	position: absolute;
-	top: 442px;
+	bottom: 326px;
 
 	font-size: 96pt;
 	z-index: 100;
@@ -352,7 +354,7 @@ body.layer2 > #layer2 {
 	margin: 0;
     padding: 8px 9px;
 	position: absolute;
-    right: 120px;
+    right: 72px;
     bottom: 20px;
     width: 48px;
     height: 48px;
@@ -376,7 +378,7 @@ body.layer2 > #layer2 {
 	margin: 0;
     padding: 8px 2px;
     position: absolute;
-    right: 168px;
+    right: 120px;
     bottom: 20px;
     width: 48px;
     height: 48px;
