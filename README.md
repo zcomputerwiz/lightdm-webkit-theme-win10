@@ -1,11 +1,10 @@
-# WARNING: THIS ONLY WORKS FOR 1366x768 NOW!
 ## YOU NEED TO HAVE THE SEGOE UI FONT FROM A WINDOWS 10 INSTALLATION
 
 # Win10 for LightDM
 
 [![MIT License][license-badge]](LICENSE.md)
 
-A Windows 10 inspired theme for LightDM. [Try the demo](https://xseba360.github.io/lightdm-webkit-theme-win10/index.html) to see how you like it! Tendou isn't intended to look exactly like Windows 10, but you're free to fork and tweak the styles.
+A Windows 10 inspired theme for LightDM. [Try the demo](https://zcomputerwiz.github.io/lightdm-webkit-theme-win10/index.html) to see how you like it! Tendou isn't intended to look exactly like Windows 10, but you're free to fork and tweak the styles.
 
 Tendou allows for switching users, but not graphical sessions. It also allows you to shutdown/restart/sleep from the menu in the bottom right.
 
