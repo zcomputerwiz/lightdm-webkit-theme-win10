@@ -32,8 +32,8 @@ body {
 }
 
 body.layer2 {
-	background-size: 1398px 786px;
-	background-position: -16px -9px;
+	background-size: 102vw auto;
+	background-position: center center;
 }
 
 body:before {
